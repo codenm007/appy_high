@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import AgoraRTC from "agora-rtc-sdk-ng";
 import useAgora from "../hooks/useAgora";
 import MediaPlayer from "../components/MediaPlayer";
@@ -40,7 +40,7 @@ function Call() {
 
   const leave_call = () => {
     leave();
-    window.open(`http://${window.location.hostname}:3000`, "_self");
+    window.open(`https://${window.location.hostname}`, "_self");
   };
 
   const mute_self_audio = () =>{
