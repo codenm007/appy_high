@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Landing_page from './pages/index';
-import Call from './Call';
+import Landing_page from './pages/landing';
+import Call from './pages/Call';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 
 const App = () =>{

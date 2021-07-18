@@ -1,0 +1,54 @@
+.call {
+  text-align: center;
+}
+
+.player-container {
+  padding: 20px;
+  text-align: initial;
+}
+
+.button-group {
+  padding: 20px;
+}
+
+body{
+  background-color: rgba(31, 28, 28, 0.87);
+}
+
+.call-form {
+  padding: 20px;
+}
+
+input, button {
+  margin-right: 10px;
+}
+
+#self_video {
+position: absolute;
+right: 20px;
+bottom: 10px;
+z-index: +1;
+height: 180px;
+width: 230px;
+border: 2px solid green;
+}
+
+#remote_video {
+position: absolute;
+z-index: -1;
+height: 97%;
+width: 98%;
+
+}
+
+#navigation_buttons{
+  position: absolute;
+  z-index: +1;
+  bottom: 10px;
+  left: 600px;
+}
+
+#call_duration {
+  color: white;
+  font-size: 28px;
+}
