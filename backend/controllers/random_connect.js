@@ -47,9 +47,9 @@ const random_connect = function(socket) {
             token: agora.agora_access_token(room)
         }
 
-        peer.emit('chat start',response);
-        socket.emit('chat start',response);
-
+        peer.emit('join_room',response);
+        socket.emit('join_room',response);
+        
         
       })
       .catch(err => {
