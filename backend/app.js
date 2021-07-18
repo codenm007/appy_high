@@ -7,8 +7,7 @@ var app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(server); 
-
+const io = new Server(server);
 const socket_jobs = require('./routes/sockets_server/sockets')(io);
 
 const path = require("path");
@@ -19,7 +18,7 @@ server.listen(port, () => {
   console.log(`Server is listening on port : ${port}`);
 });
 
-//app.use(express.static(path.join(__dirname,"public")));
+app.use(express.static(path.join(__dirname,"public")));
 
 // using plugins
 app.use(helmet());
