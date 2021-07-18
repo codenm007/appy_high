@@ -8,6 +8,8 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+
+//passing sockets to socket_jobs
 const socket_jobs = require('./routes/sockets_server/sockets')(io);
 
 const path = require("path");
@@ -35,14 +37,9 @@ app.use(parser.json())
 
 //importing routes
 const index = require("./routes/index")
-const users = require("./routes/users");
 
-
-
-
-
+//sample test route
  app.use('/test', index);
- app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
