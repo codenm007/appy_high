@@ -1,4 +1,6 @@
 ## Important Info
+
+### Heroko sample api [cleck here !](https://talkfreeely.herokuapp.com/)
   
 > 1. **Get into the cloned folder and tye** `npm i`
 > 2. **Rename the demo.env to .env and enter the imortant env details** 
