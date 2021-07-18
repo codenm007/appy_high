@@ -1,6 +1,4 @@
 ## Important Info
-
-### Postman Documentation Link : [Click here](https://documenter.getpostman.com/view/12866660/TzmCfsDH)
   
 > 1. **Get into the cloned folder and tye** `npm i`
 > 2. **Rename the demo.env to .env and enter the imortant env details** 
@@ -14,6 +12,7 @@
  - NodeJS
  - ExpressJS
  - MONGO DB
+ - Socket.io
 
 **Some info about developer:**
 
