@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Landing_page from './pages/index';
-
+import App from './app';
 ReactDOM.render(
   <React.StrictMode>
-    <Landing_page />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

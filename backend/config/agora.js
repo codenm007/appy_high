@@ -15,7 +15,7 @@ const privilegeExpiredTs = currentTimestamp + expirationTimeInSeconds
 const role = RtcRole.PUBLISHER;
 
 const agora_access_token = function(channel_name) { 
-   const token = RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel_name, uid, role, privilegeExpiredTs);
+   const token = RtcTokenBuilder.buildTokenWithUid(appID, appCertificate, channel_name, uid, role);
    console.log("Token" , token);
     return token;
 }
