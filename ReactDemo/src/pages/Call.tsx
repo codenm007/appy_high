@@ -6,6 +6,7 @@ import "./Call.css";
 import { useStopwatch } from "react-timer-hook";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMicrophone,faMicrophoneSlash,faPhoneSlash } from '@fortawesome/free-solid-svg-icons'
+import { Console } from "console";
 
 const client = AgoraRTC.createClient({ codec: "h264", mode: "rtc" });
 const appid = "04cc72fdb6f64c308af7ad3a9868fe60";
@@ -50,11 +51,23 @@ function Call() {
     localAudioTrack?.setMuted(is_muted);
     
   }
-
-
-
-  return (
-    <div className="call">
+const Detetct_camera_on = () => {
+  //console.log(localVideoTrack,54)
+  if(localVideoTrack === undefined){
+    return (
+      <>
+      <div className="alert alert-warning" role="alert">
+      <h4 className="alert-heading">Physical Camera Not Found !</h4>
+      <p>No video device was found on your device.</p>
+      <hr />
+      <p className="mb-0">If your laptop has a physical camera please make sure to turn it on using Fn keys</p>
+    </div>
+     </>
+    )
+  }else{
+    console.log('detect camera failed')
+    return (
+      <>
       <div className="player-container">
         <div className="local-player-wrapper" id="self_video">
           <MediaPlayer
@@ -75,8 +88,19 @@ function Call() {
           </div>
         ))}
       </div>
+      </>
+    )
+  }
 
-      {console.log('4455')}
+}
+
+  return (
+    <div className="call">
+
+      
+    {Detetct_camera_on()}
+
+      {/* {console.log(localVideoTrack,8888)} */}
 
       <div id="navigation_buttons" className="">
         <div className="row">

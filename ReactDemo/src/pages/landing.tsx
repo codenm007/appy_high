@@ -16,6 +16,7 @@ const CONNECTION_PORT = "talkfreeely.herokuapp.com/";
 
 const Landing_page = () => {
   useEffect(() => {
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true });
     console.log("frffrrff");
     socket = io(CONNECTION_PORT, {
       transports: ["websocket", "polling", "flashsocket"],
@@ -24,7 +25,7 @@ const Landing_page = () => {
     socket.on("chat start", (data: any) => {
       console.log(data.room_name, "received from sockets");
       window.open(
-        `http://${window.location.hostname}:3000/connect_call?room=${data.room_name}&token=${data.token}`,
+        `https://${window.location.hostname}/connect_call?room=${data.room_name}&token=${data.token}`,
         "_self"
       );
     });
