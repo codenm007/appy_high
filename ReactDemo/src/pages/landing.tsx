@@ -62,7 +62,9 @@ const Landing_page = () => {
         >
           
           <Modal.Body>
-            <p>Please wait while we connect you to someone special ! </p>
+            <div className = "d-flex justify-content-center">
+            <p style = {{fontWeight:"bold" , fontSize:"1rem"}}>Please wait while we connect you to someone special ! </p>
+            </div>
             <div className = "d-flex justify-content-center">
             <img src = {loading}  width = {'400px'} height = {'250px'}/>
             </div>

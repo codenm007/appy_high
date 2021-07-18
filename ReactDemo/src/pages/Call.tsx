@@ -57,15 +57,15 @@ const Detetct_camera_on = () => {
     return (
       <>
       <div className="alert alert-warning" role="alert">
-      <h4 className="alert-heading">Physical Camera Not Found !</h4>
-      <p>No video device was found on your device.</p>
+      <h4 className="alert-heading">Please enable camera access !</h4>
+      <p>Inorder to start your video call please accept access request or enable camera on your device!</p>
       <hr />
       <p className="mb-0">If your laptop has a physical camera please make sure to turn it on using Fn keys</p>
     </div>
      </>
     )
   }else{
-    console.log('detect camera failed')
+    //console.log('detect camera failed')
     return (
       <>
       <div className="player-container">
