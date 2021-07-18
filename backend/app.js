@@ -10,15 +10,20 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const socket_jobs = require('./routes/sockets_server/sockets')(io);
 
+const path = require("path");
+
 const port = process.env.PORT || 8081
 
 server.listen(port, () => {
   console.log(`Server is listening on port : ${port}`);
 });
 
+app.use(express.static(path.join(__dirname,"public")));
+
 // using plugins
 app.use(helmet());
 app.use(cors());
+
 
 // parse application/x-www-form-urlencoded
 app.use(parser.urlencoded({ extended: false }))
@@ -36,7 +41,7 @@ const users = require("./routes/users");
 
 
 
- app.use('/', index);
+ app.use('/test', index);
  app.use('/users', users);
 
 // catch 404 and forward to error handler
