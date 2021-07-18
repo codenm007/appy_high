@@ -6,7 +6,6 @@ import "./Call.css";
 import { useStopwatch } from "react-timer-hook";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMicrophone,faMicrophoneSlash,faPhoneSlash } from '@fortawesome/free-solid-svg-icons'
-import { Console } from "console";
 
 const client = AgoraRTC.createClient({ codec: "h264", mode: "rtc" });
 const appid = "04cc72fdb6f64c308af7ad3a9868fe60";
@@ -38,12 +37,13 @@ function Call() {
   }, []);
 
 
-
+//leave call function
   const leave_call = () => {
     leave();
     window.open(`https://${window.location.hostname}`, "_self");
   };
 
+  //mute audio function
   const mute_self_audio = () =>{
 
     is_muted = !is_muted;
@@ -51,6 +51,8 @@ function Call() {
     localAudioTrack?.setMuted(is_muted);
     
   }
+
+  //this function detects if the camera is on or not and alters accordingly
 const Detetct_camera_on = () => {
   //console.log(localVideoTrack,54)
   if(localVideoTrack === undefined){

@@ -16,14 +16,17 @@ const CONNECTION_PORT = "talkfreeely.herokuapp.com/";
 
 const Landing_page = () => {
   useEffect(() => {
+    //asking camera and audio permission
     navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-    console.log("frffrrff");
+    
+    //connecting with sockets
     socket = io(CONNECTION_PORT, {
       transports: ["websocket", "polling", "flashsocket"],
     });
 
-    socket.on("chat start", (data: any) => {
-      console.log(data.room_name, "received from sockets");
+    //tells client to join room with random user
+    socket.on("join_room", (data: any) => {
+     // console.log(data.room_name, "received from sockets");
       window.open(
         `https://${window.location.hostname}/connect_call?room=${data.room_name}&token=${data.token}`,
         "_self"
@@ -31,10 +34,12 @@ const Landing_page = () => {
     });
   }, [CONNECTION_PORT]);
 
+  // adds the user to waiting list 
    const add_to_waiting_list = async () => {
-    await socket.emit("connect_random", "ggygygyygygy");
+    await socket.emit("connect_random", "");
    };
 
+//connect calll randomly function 
   const Connect_call = () => {
     const [show, setShow] = useState(false);
   
