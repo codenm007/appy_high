@@ -4,12 +4,8 @@ import useAgora from "../hooks/useAgora";
 import MediaPlayer from "../components/MediaPlayer";
 import "./Call.css";
 import { useStopwatch } from "react-timer-hook";
-import { io } from "socket.io-client";
-import loading from "../loading.gif";
-import { Button, Modal } from "react-bootstrap";
-
-let socket: any;
-const CONNECTION_PORT = "localhost:8081/";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMicrophone,faMicrophoneSlash,faPhoneSlash } from '@fortawesome/free-solid-svg-icons'
 
 const client = AgoraRTC.createClient({ codec: "h264", mode: "rtc" });
 const appid = "04cc72fdb6f64c308af7ad3a9868fe60";
@@ -18,11 +14,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const room_id = String(urlParams.get("room"));
 const token1 = String(urlParams.get("token")).replace(/ /g, "+");
 
-function Call() {
-  const [show, setShow] = useState(false);
+let is_muted = false;
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+function Call() {
+
 
   const { seconds, minutes, hours, isRunning } = useStopwatch({
     autoStart: true,
@@ -41,60 +36,22 @@ function Call() {
     join(appid, room_id, token1);
   }, []);
 
-  useEffect(() => {
-    console.log("frffrrff");
-    socket = io(CONNECTION_PORT, {
-      transports: ["websocket", "polling", "flashsocket"],
-    });
 
-    socket.on("chat start", (data: any) => {
-      console.log(data.room_name, "received from sockets");
-      window.open(
-        `http://${window.location.hostname}:3000/connect_call?room=${data.room_name}&token=${data.token}`,
-        "_self"
-      );
-    });
-  }, [CONNECTION_PORT]);
-
-  const add_to_waiting_list = async () => {
-    //leave()
-    await socket.emit("connect_random", "ggygygyygygy");
-  };
 
   const leave_call = () => {
     leave();
     window.open(`http://${window.location.hostname}:3000`, "_self");
   };
 
-  const Connect_call = () => {
-    return (
-      <>
-        <Button
-          variant="danger"
-          onClick={() => {
-            handleShow();
-          }}
-        >
-          Connect Call Randomly
-        </Button>
+  const mute_self_audio = () =>{
 
-        <Modal
-          show={show}
-          onHide={handleClose}
-          backdrop="static"
-          keyboard={false}
-          centered
-        >
-          <Modal.Body>
-            <p>Please wait while we connect you to someone special </p>
-            <div className="d-flex justify-content-center">
-              <img src={loading} width={"400px"} height={"250px"} />
-            </div>
-          </Modal.Body>
-        </Modal>
-      </>
-    );
-  };
+    is_muted = !is_muted;
+    
+    localAudioTrack?.setMuted(is_muted);
+    
+  }
+
+
 
   return (
     <div className="call">
@@ -119,10 +76,12 @@ function Call() {
         ))}
       </div>
 
+      {console.log('4455')}
+
       <div id="navigation_buttons" className="d-flex justify-content-center">
         <div className="row">
           <div className="col-12 col-md-4">
-            <Connect_call />
+           <button className ="btn btn-danger" onClick ={()=>mute_self_audio()}> {is_muted ?<FontAwesomeIcon icon={faMicrophoneSlash} />:<FontAwesomeIcon icon={faMicrophone} /> }  </button>
           </div>
 
           <div className="col-12 col-md-4">
@@ -142,7 +101,7 @@ function Call() {
                 leave_call();
               }}
             >
-              Leave
+              <FontAwesomeIcon icon={faPhoneSlash} size="lg" />
             </button>
           </div>
         </div>
