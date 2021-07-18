@@ -78,10 +78,10 @@ function Call() {
 
       {console.log('4455')}
 
-      <div id="navigation_buttons" className="d-flex justify-content-center">
+      <div id="navigation_buttons" className="">
         <div className="row">
           <div className="col-12 col-md-4">
-           <button className ="btn btn-danger" onClick ={()=>mute_self_audio()}> {is_muted ?<FontAwesomeIcon icon={faMicrophoneSlash} />:<FontAwesomeIcon icon={faMicrophone} /> }  </button>
+           <button style = {{borderRadius:"20px"}} className ="btn btn-danger" onClick ={()=>mute_self_audio()}> {is_muted ?<FontAwesomeIcon icon={faMicrophoneSlash} size="2x"/>:<FontAwesomeIcon icon={faMicrophone} size="2x"/> }  </button>
           </div>
 
           <div className="col-12 col-md-4">
@@ -91,19 +91,21 @@ function Call() {
             </div>
           </div>
 
-          <div className="col-12 col-md-4">
+          <div className="col-12 col-md-4 " >
             <button
               id="leave"
               type="button"
+              style = {{borderRadius:"20px"}}
               className="btn btn-primary btn-sm"
               disabled={!joinState}
               onClick={() => {
                 leave_call();
               }}
             >
-              <FontAwesomeIcon icon={faPhoneSlash} size="lg" />
+              <FontAwesomeIcon icon={faPhoneSlash} size="2x" />
             </button>
           </div>
+
         </div>
       </div>
     </div>
