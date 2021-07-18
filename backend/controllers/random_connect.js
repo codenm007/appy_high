@@ -39,29 +39,18 @@ const random_connect = function(socket) {
 
       new_call_log.save()
       .then((data)=>{
-        console.log(peer_ip,socket_ip,data,23);
+      //  console.log(peer_ip,socket_ip,data,23);
         // exchange names between the two of them and start the chat
 
-        const response1 = {
+        const response = {
             room_name:room,
             token: agora.agora_access_token(room)
         }
 
-        const resp_2 = {
-            room_name:room,
-            token: agora.agora_access_token(room)
-        }
+        peer.emit('chat start',response);
+        socket.emit('chat start',response);
 
-        if(response1 === resp_2){
-          console.log(0909099009)
-        }else{
-          console.log('no match')
-        }
-
-        peer.emit('chat start',response1);
-        socket.emit('chat start',resp_2);
-
-        console.log("rearggghjk",53)
+        
       })
       .catch(err => {
           console.log(err);
