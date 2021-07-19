@@ -52,6 +52,10 @@ function Call() {
     
   }
 
+  //cutting audio feedback loop
+  localAudioTrack?.stop()
+  
+
   //this function detects if the camera is on or not and alters accordingly
 const Detetct_camera_on = () => {
   //console.log(localVideoTrack,54)
